@@ -5,7 +5,8 @@ const app = Vue.createApp({
             image: './assets/images/socks_green.jpg',
             description: 'Got a lot of sole due to a hole',
             url: 'https://www.google.com',
-            inStock: false
+            inventory: 118,
+            onSale: true,
         }
     }
 
