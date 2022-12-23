@@ -22,11 +22,14 @@
                 <div class="product-info">
                     <h1>{{ product }}</h1>
                     <a :href="url">Click me!</a>
+
+                    <p v-if="inStock">In stock</p>
+                    <p v-else>Out of stock</p>
+                    <p v-show="inStock">{{ description }}</p>
+
                 </div>
             </div>
         </div>
-
-        <!-- <p>{{ description }}</p> -->
     </div>
 
     <!-- Import App -->

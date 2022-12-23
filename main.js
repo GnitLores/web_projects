@@ -4,7 +4,8 @@ const app = Vue.createApp({
             product: 'Socks',
             image: './assets/images/socks_green.jpg',
             description: 'Got a lot of sole due to a hole',
-            url: 'https://www.google.com'
+            url: 'https://www.google.com',
+            inStock: false
         }
     }
 
