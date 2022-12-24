@@ -6,7 +6,7 @@ const app = Vue.createApp({
             image: './assets/images/socks_green.jpg',
             description: 'Got a lot of sole due to a hole',
             url: 'https://www.google.com',
-            inventory: 118,
+            inventory: 4,
             onSale: true,
             details: ["50% cotton", "30% wool", "20% polyester"],
             variants: [
@@ -17,11 +17,15 @@ const app = Vue.createApp({
     },
     methods: {
         addToCart() {
+            if (this.inventory > 0) {
             this.cart += 1
+            this.inventory -= 1
+        }
         },
         removeFromCart() {
             if (this.cart > 0) {
                 this.cart -= 1
+                this.inventory += 1
             }
         },
         updateImage(variantImage) {
