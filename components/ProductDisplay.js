@@ -70,7 +70,7 @@ app.component("product-display", {
 methods: {
     addToCart() {
         if (this.inStock) {
-        this.cart += 1
+        this.$emit("add-to-cart", this.variant.id)
     }
     },
     removeFromCart() {
