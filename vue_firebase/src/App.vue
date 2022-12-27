@@ -57,21 +57,27 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { v4 as uuidv4 } from "uuid";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebase";
 
-const todos = ref([
-  {
-    id: "id1",
-    content: "brew coffee",
-    done: false,
-  },
-  {
-    id: "id2",
-    content: "drink coffee",
-    done: true,
-  },
-]);
+const todos = ref([]);
+
+onMounted(async () => {
+  const querySnapshot = await getDocs(collection(db, "todos"));
+  let fbTodos = [];
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data());
+    const todo = {
+      id: doc.id,
+      content: doc.data().content,
+      done: doc.data().done,
+    };
+    fbTodos.push(todo);
+  });
+  todos.value = fbTodos;
+});
 
 const newTodoContent = ref("");
 
