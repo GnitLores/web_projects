@@ -14,6 +14,9 @@ body {
   height: 5rem;
   background: #222;
   padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 9;
 }
 
 .nav-title {
@@ -31,13 +34,20 @@ body {
 }
 
 .hero {
-  background: linear-gradient(
-      to right,
-      rgba(105, 62, 27, 0.5),
-      rgba(105, 62, 27, 1)
-    ),
-    url(./coffee\ beans.jpg) center/cover;
   min-height: calc(100vh - 5rem);
+  background: rgba(105, 62, 27, 1);
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    background: linear-gradient(
+        to right,
+        rgba(105, 62, 27, 0.5),
+        rgba(105, 62, 27, 1)
+      ),
+      url(./coffee\ beans.jpg) center/cover;
+  }
 }
 
 .hero-center {
@@ -46,6 +56,12 @@ body {
   margin: 0 auto;
   padding: 5rem 0;
   color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  /* border: 2px solid red; */
 }
 
 .hero-center h1 {
@@ -54,9 +70,10 @@ body {
   margin-bottom: 0.75rem;
 }
 .hero-center p {
+  max-width: 35rem;
+  margin: 0 auto;
   margin-bottom: 1.5rem;
-  max-width: 25em;
-  text-align: justify;
+  /* border: 2px solid red; */
 }
 
 .hero-btn {
@@ -66,4 +83,8 @@ body {
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 2px;
+}
+
+.temp {
+  min-height: 100vh;
 }
