@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+}
+
+:root {
+  --primary: #645cff;
+  --primary-dark: #3c3799;
+  --gray-light: #f1f5f9;
+  --gray: #64748b;
+  --gray-dark: #0f172a;
+  --fluid-width: 90vw;
+  --max-width: 1170px;
+  --black: #222;
+  --white: #fff;
+  --letter-spacing: 2px;
+  --border-radio: 0.15rem;
+  --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --transition: 0.3s ease-in-out all;
+}
