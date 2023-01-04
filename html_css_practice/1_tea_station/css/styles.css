@@ -119,6 +119,12 @@ More gloal styles
   color: var(--clr-primary);
   background: var(--clr-primary-light);
 }
+.clearfix::after,
+.clearfix::before {
+  content: "";
+  clear: both;
+  display: table;
+}
 
 /*
 ===============
@@ -201,4 +207,15 @@ Skills
 }
 .skill:hover .skill-icon {
   transform: translateY(-5px);
+}
+@media screen and (min-width: 578px) {
+  .skill {
+    float: left;
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .skill {
+    width: 25%;
+  }
 }
