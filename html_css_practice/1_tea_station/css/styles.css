@@ -226,7 +226,7 @@ Navbar
   z-index: 1;
   cursor: pointer;
   /* animation */
-  animation: bounce 1.5s ease infinite;
+  animation: bounce 1.5s linear infinite;
 }
 /* navbar */
 .navbar {
