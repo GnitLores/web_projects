@@ -118,10 +118,6 @@ Hero
   justify-content: center;
   align-items: center;
 }
-.hero-banner {
-  /* background: blue; */
-  /* text-align: center; */
-}
 .hero-banner p {
   width: 80%;
   max-width: 560px;
