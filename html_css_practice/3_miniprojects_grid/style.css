@@ -172,15 +172,12 @@ Cards
 .card-footer {
   color: var(--primaryColor);
 }
-@media screen and (min-width: 768px) {
-  .cards-center {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
-  }
-}
-@media screen and (min-width: 1170px) {
-  .cards-center {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* Auto fit columns without media query. */
+/* Max number of columns is 4, so min column size will be: */
+/* (1170 - (32 * 3)) / 4 = 268.5  pixels */
+/* because we have 1170px max width, three 32px gaps, 4 columns */
+.cards-center {
+  display: grid;
+  column-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(268.5px, 1fr));
 }
