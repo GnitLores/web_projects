@@ -104,3 +104,37 @@ Main Navbar
     text-align: center;
   }
 }
+
+/*
+===============
+Hero
+===============
+*/
+.hero-header {
+  min-height: 100vh;
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.hero-banner {
+  /* background: blue; */
+  /* text-align: center; */
+}
+.hero-banner p {
+  width: 80%;
+  max-width: 560px;
+  font-size: 1rem;
+}
+@media screen and (min-width: 600) {
+  .hero-banner {
+    padding: 0 3rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .hero-header {
+    background: linear-gradient(rgba(241, 81, 37, 0.75), rgba(0, 0, 0, 0.75)),
+      url(./images/image-2.jpeg) center/cover fixed no-repeat;
+  }
+}
