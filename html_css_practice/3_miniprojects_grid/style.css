@@ -172,6 +172,12 @@ Cards
 .card-footer {
   color: var(--primaryColor);
 }
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
 /* Auto fit columns without media query. */
 /* Max number of columns is 4, so min column size will be: */
 /* (1170 - (32 * 3)) / 4 = 268.5  pixels */
