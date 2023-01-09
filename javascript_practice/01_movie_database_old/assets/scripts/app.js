@@ -123,6 +123,7 @@ const addMovieHandler = () => {
     rating: ratingValue,
   };
   movies.push(newMovie);
+  console.log(movies);
   closeMovieModal();
   clearMovieInput();
   renderNewMovieElement(
