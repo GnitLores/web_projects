@@ -4,6 +4,7 @@ const vm = Vue.createApp({
       firstName: "John",
       lastName: "Doe",
       url: "https://google.com",
+      raw_url: '<p><a href="https://google.com" target="_blank">Google</a></p>',
     };
   },
   methods: {
