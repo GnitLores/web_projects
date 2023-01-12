@@ -1,16 +1,33 @@
-<!DOCTYPE>
+<!DOCTYPE >
 <html>
+  <head>
+    <title>VueJS Course</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
 
-<head>
-  <title>VueJS Course</title>
-  <link rel="stylesheet" type="text/css" href="main.css" />
-</head>
+  <body>
+    <div id="app">
+      <ul>
+        <!-- The value can be used in directives as well -->
+        <!-- Bind to key to uniquely identify item -->
+        <li v-for="(bird, index) in birds" :class="bird" :key="bird">
+          {{ index }}: {{ bird }}
+        </li>
+      </ul>
 
-<body>
-  <div id="app"></div>
+      <hr />
 
-  <script src="https://unpkg.com/vue@next"></script>
-  <script src="app.js"></script>
-</body>
+      <ul>
+        <li v-for="person in people">
+          <!-- Looping through object properties -->
+          <div v-for="(value, key, index) in person">
+            {{ key }}: {{ value }} - Index: {{ index }}
+          </div>
+        </li>
+      </ul>
+    </div>
 
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
