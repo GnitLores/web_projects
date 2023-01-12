@@ -1,16 +1,28 @@
-<!DOCTYPE>
+<!DOCTYPE >
 <html>
+  <head>
+    <title>VueJS Course</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
 
-<head>
-  <title>VueJS Course</title>
-  <link rel="stylesheet" type="text/css" href="main.css" />
-</head>
+  <body>
+    <div id="app">
+      <p v-if="mode == 1">Showing v-if directive content</p>
+      <!-- Vue renders content of template tag without rendering template element itself, maintaining document structure unlike using e.g. a div. -->
+      <template v-else-if="mode == 2">
+        <h3>Bones header:</h3>
+        <p>v-else-if</p>
+      </template>
+      <p v-else>v-else</p>
 
-<body>
-  <div id="app"></div>
+      <select v-model="mode">
+        <option value="1">v-if</option>
+        <option value="2">v-else-if</option>
+        <option value="3">v-else</option>
+      </select>
+    </div>
 
-  <script src="https://unpkg.com/vue@next"></script>
-  <script src="app.js"></script>
-</body>
-
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
