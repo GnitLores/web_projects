@@ -7,13 +7,17 @@
 
   <body>
     <div id="app">
+      <!-- The v-if directive determines if element is loaded. -->
       <p v-if="mode == 1">Showing v-if directive content</p>
-      <!-- Vue renders content of template tag without rendering template element itself, maintaining document structure unlike using e.g. a div. -->
+      <!-- Vue renders the content of template tag without rendering the template element itself, maintaining document structure unlike using e.g. a div. -->
       <template v-else-if="mode == 2">
         <h3>Bones header:</h3>
         <p>v-else-if</p>
       </template>
       <p v-else>v-else</p>
+
+      <!-- Unlike v-if, v-show always load the element and just changes the display property. -->
+      <i v-show="mode == 1">v-show</i>
 
       <select v-model="mode">
         <option value="1">v-if</option>
