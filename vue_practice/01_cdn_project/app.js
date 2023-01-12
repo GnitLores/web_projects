@@ -11,13 +11,17 @@ const vm = Vue.createApp({
   },
   methods: {
     fullName() {
-      return `${this.firstName} ${this.lastName.toUpperCase()}`;
+      return `${this.firstName} ${
+        this.middleName
+      } ${this.lastName.toUpperCase()}`;
     },
     increment() {
       this.age++;
     },
+    updateMiddleName(event) {
+      this.middleName = event.target.value;
+    },
     updateLastName(msg, event) {
-      console.log(msg);
       this.lastName = event.target.value;
     },
   },

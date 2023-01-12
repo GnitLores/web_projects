@@ -16,6 +16,9 @@
       <label>First Name</label>
       <input type="text" v-model="firstName" />
 
+      <label>Middle Name</label>
+      <input type="text" @keyup.enter="updateMiddleName" />
+
       <label>Last Name</label>
       <input
         type="text"
