@@ -9,7 +9,7 @@
     <div id="app">
       <ul>
         <!-- The value can be used in directives as well -->
-        <!-- Bind to key to uniquely identify item -->
+        <!-- Bind to key to uniquely identify item. If this is included, vue can use it to prevent certain problems that may occur if the state of the data changes. -->
         <li v-for="(bird, index) in birds" :class="bird" :key="bird">
           {{ index }}: {{ bird }}
         </li>
