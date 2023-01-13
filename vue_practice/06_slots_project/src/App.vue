@@ -1,5 +1,15 @@
-<template></template>
+<template>
+  <!-- Alternative syntax for using component -->
+  <app-form />
+</template>
 
 <script>
-export default { name: 'App' };
+import AppForm from './components/Form.vue';
+
+export default {
+  name: 'App',
+  components: {
+    AppForm,
+  },
+};
 </script>
