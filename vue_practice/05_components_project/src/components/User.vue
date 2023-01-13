@@ -7,7 +7,17 @@
 <script>
 export default {
   name: 'user',
-  props: ['age'],
+  props: {
+    age: {
+      type: Number,
+      //   required: true,
+      //   default: 20,
+      validator(value) {
+        // Validator is run before creation so no access to methods etc.
+        return value < 40;
+      },
+    },
+  },
   emits: ['age-change'], // not necessary but good practice to list emitted events
   computed: {
     ageDoubled() {
