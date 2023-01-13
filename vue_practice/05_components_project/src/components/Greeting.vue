@@ -14,8 +14,8 @@ export default {
 </script>
 
 <!-- The scoped attribute limits the style to this component only -->
-<style scoped>
-p {
-  color: red;
+<style scoped lang="scss">
+p:hover {
+  color: darken(#cc4444, 15%);
 }
 </style>
