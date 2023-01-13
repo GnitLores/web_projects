@@ -1,14 +1,15 @@
 <template>
-  <p>{{ msg }}</p>
+  <greeting></greeting>
 </template>
 
 <script>
+// Local component registration
+import Greeting from '@/components/Greeting.vue';
+
 export default {
   name: 'App',
-  data() {
-    return {
-      msg: 'Hello World',
-    };
+  components: {
+    Greeting,
   },
 };
 </script>
