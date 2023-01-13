@@ -12,3 +12,10 @@ export default {
   },
 };
 </script>
+
+<!-- The scoped attribute limits the style to this component only -->
+<style scoped>
+p {
+  color: red;
+}
+</style>
