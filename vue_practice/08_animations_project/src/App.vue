@@ -24,7 +24,8 @@
       @after-leave="afterLeave"
       @enter-cancelled=""
       @leave-cancelled=""
-      :css="false"
+      :css="true"
+      name="fade"
     >
       <h2 v-if="flag">Hello</h2>
     </transition>
@@ -40,20 +41,21 @@ export default {
     };
   },
   methods: {
-    // done() is a callback function called when animation has finished, must be used with enter and leave
+    // done() is a callback function called when animation has finished, can be used with enter and leave
     beforeEnter(el) {
       console.log('before-enter', el);
     },
-    enter(el, done) {
+    // If done() is not included, vue uses css durations to tell when animation has finished
+    enter(el) {
       console.log('enter', el);
 
-      const animation = el.animate([{ transform: 'scale3d(0,0,0)' }, {}], {
-        duration: 1000,
-      });
+      // const animation = el.animate([{ transform: 'scale3d(0,0,0)' }, {}], {
+      //   duration: 1000,
+      // });
 
-      animation.onfinish = () => {
-        done();
-      };
+      // animation.onfinish = () => {
+      //   done();
+      // };
     },
     afterEnter(el) {
       console.log('after-enter', el);
@@ -61,16 +63,16 @@ export default {
     beforeLeave(el) {
       console.log('before-leave', el);
     },
-    leave(el, done) {
+    leave(el) {
       console.log('leave', el);
 
-      const animation = el.animate([{}, { transform: 'scale3d(0,0,0)' }], {
-        duration: 1000,
-      });
+      // const animation = el.animate([{}, { transform: 'scale3d(0,0,0)' }], {
+      //   duration: 1000,
+      // });
 
-      animation.onfinish = () => {
-        done();
-      };
+      // animation.onfinish = () => {
+      //   done();
+      // };
     },
     afterLeave(el) {
       console.log('after-leave', el);
@@ -85,18 +87,18 @@ h2 {
   padding: 20px;
   margin: 20px;
 }
-// .fade-enter-from {
-//   opacity: 0;
-// }
-// .fade-enter-active {
-//   // values: property time function
-//   transition: all 0.5s linear;
-// }
-// // Default style is opacity 1, so no need to apply
-// .fade-leave-to {
-//   transition: all 0.5s linear;
-//   opacity: 0;
-// }
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-active {
+  // values: property time function
+  transition: all 0.5s linear;
+}
+// Default style is opacity 1, so no need to apply
+.fade-leave-to {
+  transition: all 0.5s linear;
+  opacity: 0;
+}
 
 // .zoom-enter-active {
 //   animation: zoom-in 1s linear forwards;
