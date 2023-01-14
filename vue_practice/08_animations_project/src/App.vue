@@ -10,7 +10,22 @@
     </transition> -->
 
     <!-- appear makes the animation play on page load -->
-    <transition name="zoom" type="animation" appear>
+    <!-- <transition name="zoom" type="animation" appear>
+      <h2 v-if="flag">Hello</h2>
+    </transition> -->
+
+    <!-- :css="false" tells Vue not to check for css animations, which it prefers over javascript animations -->
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+      @enter-cancelled=""
+      @leave-cancelled=""
+      :css="false"
+    >
       <h2 v-if="flag">Hello</h2>
     </transition>
   </div>
@@ -23,6 +38,43 @@ export default {
     return {
       flag: true,
     };
+  },
+  methods: {
+    // done() is a callback function called when animation has finished, must be used with enter and leave
+    beforeEnter(el) {
+      console.log('before-enter', el);
+    },
+    enter(el, done) {
+      console.log('enter', el);
+
+      const animation = el.animate([{ transform: 'scale3d(0,0,0)' }, {}], {
+        duration: 1000,
+      });
+
+      animation.onfinish = () => {
+        done();
+      };
+    },
+    afterEnter(el) {
+      console.log('after-enter', el);
+    },
+    beforeLeave(el) {
+      console.log('before-leave', el);
+    },
+    leave(el, done) {
+      console.log('leave', el);
+
+      const animation = el.animate([{}, { transform: 'scale3d(0,0,0)' }], {
+        duration: 1000,
+      });
+
+      animation.onfinish = () => {
+        done();
+      };
+    },
+    afterLeave(el) {
+      console.log('after-leave', el);
+    },
   },
 };
 </script>
@@ -46,35 +98,35 @@ h2 {
 //   opacity: 0;
 // }
 
-.zoom-enter-active {
-  animation: zoom-in 1s linear forwards;
-  transition: all 1s linear;
-}
-.zoom-leave-active {
-  animation: zoom-out 1s linear forwards;
-  transition: all 1s linear;
-}
-.zoom-enter-from {
-  opacity: 0;
-}
-.zoom-leave-to {
-  opacity: 0;
-}
+// .zoom-enter-active {
+//   animation: zoom-in 1s linear forwards;
+//   transition: all 1s linear;
+// }
+// .zoom-leave-active {
+//   animation: zoom-out 1s linear forwards;
+//   transition: all 1s linear;
+// }
+// .zoom-enter-from {
+//   opacity: 0;
+// }
+// .zoom-leave-to {
+//   opacity: 0;
+// }
 
-@keyframes zoom-in {
-  from {
-    transform: scale(0, 0);
-  }
-  to {
-    transform: scale(1, 1);
-  }
-}
-@keyframes zoom-out {
-  from {
-    transform: scale(1, 1);
-  }
-  to {
-    transform: scale(0, 0);
-  }
-}
+// @keyframes zoom-in {
+//   from {
+//     transform: scale(0, 0);
+//   }
+//   to {
+//     transform: scale(1, 1);
+//   }
+// }
+// @keyframes zoom-out {
+//   from {
+//     transform: scale(1, 1);
+//   }
+//   to {
+//     transform: scale(0, 0);
+//   }
+// }
 </style>
