@@ -31,10 +31,7 @@
               >
             </li>
             <li>
-              <a
-                class="px-2 text-white"
-                href="#"
-                @click.prevent="userStore.signout"
+              <a class="px-2 text-white" href="#" @click.prevent="signout"
                 >Logout</a
               >
             </li>
@@ -58,6 +55,13 @@ export default {
   methods: {
     toggleAuthModal() {
       this.modalStore.isOpen = !this.modalStore.isOpen;
+    },
+    signout() {
+      this.userStore.signout();
+
+      if (this.$route.name === "manage") {
+        this.$router.push({ name: "home" });
+      }
     },
   },
 };
