@@ -16,8 +16,12 @@ const routes = [
   },
   {
     name: "manage",
-    path: "/manage",
+    path: "/manage-music",
     component: ManageView,
+  },
+  {
+    path: "/manage",
+    redirect: { name: "manage" },
   },
 ];
 
