@@ -47,7 +47,7 @@ import AppHeader from "@/components/AppHeader.vue";
 import AppAuth from "@/components/AppAuth.vue";
 import { mapWritableState } from "pinia";
 import useUseStore from "@/stores/user";
-import { auth } from "./includes/firebase";
+import { auth } from "@/includes/firebase";
 
 export default {
   name: "App",
