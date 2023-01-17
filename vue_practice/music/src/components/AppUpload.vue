@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { storage } from "@/includes/firebase";
+import { storage, auth, songsCollection } from "@/includes/firebase";
 
 export default {
   name: "AppUpload",
@@ -87,7 +87,19 @@ export default {
             this.uploads[uploadIndex].text_class = "text-red-400";
             console.log(error);
           },
-          () => {
+          async () => {
+            const song = {
+              uid: auth.currentUser.uid,
+              display_name: auth.currentUser.displayName,
+              original_name: task.snapshot.ref.name,
+              modified_name: task.snapshot.ref.name,
+              genre: "",
+              comment_count: 0,
+            };
+
+            song.url = await task.snapshot.ref.getDownloadURL();
+            await songsCollection.add(song);
+
             this.uploads[uploadIndex].variant = "bg-green-400";
             this.uploads[uploadIndex].icon = "fas fa-check";
             this.uploads[uploadIndex].text_class = "text-green-400";
