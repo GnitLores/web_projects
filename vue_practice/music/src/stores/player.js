@@ -8,6 +8,7 @@ export default defineStore("player", {
     sound: {},
     seek: "00:00",
     duration: "00:00",
+    playerProgress: "0%",
   }),
   actions: {
     async newSong(song) {
@@ -36,6 +37,10 @@ export default defineStore("player", {
     progress() {
       this.seek = helper.formatTime(this.sound.seek());
       this.duration = helper.formatTime(this.sound.duration());
+
+      this.playerProgress = `${
+        (this.sound.seek() / this.sound.duration()) * 100
+      }%`;
 
       if (this.sound.playing()) {
         requestAnimationFrame(this.progress);
