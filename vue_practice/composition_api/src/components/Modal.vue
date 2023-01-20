@@ -8,7 +8,11 @@
   </teleport>
 </template>
 
-<script setup></script>
+<script setup>
+import { useSlots } from 'vue';
+const slots = useSlots();
+console.log(slots.title());
+</script>
 
 <style scoped>
 .modal {
