@@ -1,6 +1,6 @@
 <template>
   <teleport to=".modals-container">
-    <div class="modal">
+    <div v-if="modelValue" class="modal">
       <h1>{{ props.title }}</h1>
       <slot></slot>
       <button @click="handleButtonClick">Hide modal</button>
@@ -10,6 +10,10 @@
 
 <script setup>
 const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    default: false,
+  },
   title: {
     type: String,
     default: 'No title specified',
