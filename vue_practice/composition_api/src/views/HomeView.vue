@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h3>{{ counterData.title }}:</h3>
+    <h3 ref="appTitleRef">{{ counterData.title }}:</h3>
     <div>
       <button class="btn" @click="decreaseCounter(5, $event)">--</button>
       <button class="btn" @click="decreaseCounter(1, $event)">-</button>
@@ -19,8 +19,14 @@
 </template>
 
 <script setup>
-import { reactive, computed, watch, onMounted } from 'vue';
+import { ref, reactive, computed, watch, onMounted } from 'vue';
 import { vAutofocus } from '@/directives/vAutofocus';
+
+const appTitleRef = ref(null);
+
+onMounted(() => {
+  console.log(`The app title is ${appTitleRef.value.offsetWidth} pixels wide`);
+});
 
 const counterData = reactive({
   count: 0,
