@@ -20,10 +20,10 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['hideModal']);
+const emit = defineEmits(['update:modelValue']);
 
 const handleButtonClick = () => {
-  emit('hideModal');
+  emit('update:modelValue', false);
 };
 </script>
 
