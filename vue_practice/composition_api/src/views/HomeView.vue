@@ -13,17 +13,13 @@
 
     <div class="edit">
       <h4>Edit Counter Title</h4>
-      <input v-model="counterData.title" type="text" />
+      <input v-model="counterData.title" type="text" v-autofocus />
     </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, computed, watch, onMounted } from 'vue';
-
-onMounted(() => {
-  console.log('Do stuff related to title');
-});
 
 const counterData = reactive({
   count: 0,
@@ -48,13 +44,15 @@ const decreaseCounter = (amount, event) => {
   counterData.count -= amount;
 };
 
-onMounted(() => {
-  console.log('Do stuff related to counter');
-});
+const vAutofocus = {
+  mounted: (el) => {
+    el.focus();
+  },
+};
 </script>
 
 <style scoped>
-commen .home {
+.home {
   text-align: center;
   padding: 1rem;
 }
