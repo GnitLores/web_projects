@@ -8,7 +8,6 @@
   </div>
 </template>
 
-<!-- Composition API (script setup): -->
 <script setup>
 import { ref } from 'vue';
 
@@ -21,49 +20,6 @@ const decreaseCounter = () => {
   counter.value--;
 };
 </script>
-
-<!-- Composition API (setup function): -->
-<!-- <script script>
-import { ref } from 'vue';
-
-export default {
-  setup() {
-    const counter = ref(0);
-
-    const increaseCounter = () => {
-      counter.value++;
-    };
-    const decreaseCounter = () => {
-      counter.value--;
-    };
-
-    return {
-      counter,
-      increaseCounter,
-      decreaseCounter,
-    };
-  },
-};
-</script> -->
-
-<!-- Options API: -->
-<!-- <script>
-export default {
-  data() {
-    return {
-      counter: 0,
-    };
-  },
-  methods: {
-    increaseCounter() {
-      this.counter++;
-    },
-    decreaseCounter() {
-      this.counter--;
-    },
-  },
-};
-</script> -->
 
 <style scoped>
 .home {
