@@ -1,9 +1,41 @@
 <template>
-  <div class="home"><h1>Home</h1></div>
+  <div class="home">
+    <div>
+      <button class="btn" @click="decreaseCounter">-</button>
+      <span class="counter">{{ counter }}</span>
+      <button class="btn" @click="increaseCounter">+</button>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      counter: 0,
+    };
+  },
+  methods: {
+    increaseCounter() {
+      this.counter++;
+    },
+    decreaseCounter() {
+      this.counter--;
+    },
+  },
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.home {
+  text-align: center;
+  padding: 1rem;
+}
+.btn,
+.counter {
+  font-size: 2rem;
+  margin: 1rem;
+  width: 3rem;
+  height: 3rem;
+}
+</style>
