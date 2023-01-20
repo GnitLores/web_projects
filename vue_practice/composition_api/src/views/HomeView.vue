@@ -20,6 +20,7 @@
 
 <script setup>
 import { reactive, computed, watch, onMounted } from 'vue';
+import { vAutofocus } from '@/directives/vAutofocus';
 
 const counterData = reactive({
   count: 0,
@@ -42,12 +43,6 @@ const increaseCounter = (amount, event) => {
 };
 const decreaseCounter = (amount, event) => {
   counterData.count -= amount;
-};
-
-const vAutofocus = {
-  mounted: (el) => {
-    el.focus();
-  },
 };
 </script>
 
