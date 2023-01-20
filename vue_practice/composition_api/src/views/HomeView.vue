@@ -27,6 +27,8 @@ import {
   onMounted,
   onBeforeUnmount,
   onUnmounted,
+  onActivated,
+  onDeactivated,
 } from 'vue';
 
 const counterData = reactive({
@@ -63,6 +65,12 @@ onBeforeUnmount(() => {
 });
 onUnmounted(() => {
   console.log('Unmounted');
+});
+onActivated(() => {
+  console.log('Activated');
+});
+onDeactivated(() => {
+  console.log('Deactivated');
 });
 </script>
 
