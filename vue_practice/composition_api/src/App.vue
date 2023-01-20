@@ -1,8 +1,6 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router';
-</script>
-
 <template>
+  <div class="user-data">{{ userData.name }} @{{ userData.username }}</div>
+
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/modals">Modals</RouterLink>
@@ -11,6 +9,18 @@ import { RouterLink, RouterView } from 'vue-router';
 
   <RouterView />
 </template>
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router';
+import { reactive, provide } from 'vue';
+
+const userData = reactive({
+  name: 'Darkwing',
+  username: 'Duck',
+});
+
+provide('userData', userData);
+</script>
 
 <style scoped>
 header {
@@ -46,5 +56,15 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.user-data {
+  position: absolute;
+  background: beige;
+  top: 0;
+  right: 0;
+  font-size: 1rem;
+  padding: 0.5rem;
+  color: grey;
 }
 </style>

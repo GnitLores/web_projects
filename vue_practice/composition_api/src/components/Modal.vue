@@ -4,11 +4,14 @@
       <h1>{{ props.title }}</h1>
       <slot></slot>
       <button @click="$emit('update:modelValue', false)">Hide modal</button>
+      <div>Username is {{ userData.username }}</div>
     </div>
   </teleport>
 </template>
 
 <script setup>
+import { inject } from 'vue';
+
 const props = defineProps({
   modelValue: {
     type: Boolean,
@@ -19,6 +22,8 @@ const props = defineProps({
     default: 'No title specified',
   },
 });
+
+const userData = inject('userData');
 </script>
 
 <style scoped>
