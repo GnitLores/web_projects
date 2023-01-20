@@ -19,12 +19,19 @@
 </template>
 
 <script setup>
-import { reactive, computed } from 'vue';
+import { reactive, computed, watch } from 'vue';
 
 const counterData = reactive({
   count: 0,
   title: 'My Counter',
 });
+
+watch(
+  () => counterData.count,
+  (newVal, oldVal) => {
+    console.log('Change by:', newVal - oldVal);
+  }
+);
 
 const oddOrEven = computed(() => {
   return counterData.count % 2 === 0 ? 'even' : 'odd';
