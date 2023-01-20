@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch, onMounted } from 'vue';
+import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue';
 import { vAutofocus } from '@/directives/vAutofocus';
 
 const appTitleRef = ref(null);
@@ -46,6 +46,9 @@ const oddOrEven = computed(() => {
 
 const increaseCounter = (amount, event) => {
   counterData.count += amount;
+  nextTick(() => {
+    console.log('Do something on update');
+  });
 };
 const decreaseCounter = (amount, event) => {
   counterData.count -= amount;
