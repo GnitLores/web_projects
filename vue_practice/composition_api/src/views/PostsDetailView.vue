@@ -27,7 +27,7 @@ const goHome = () => {
   router.push({ name: 'home' });
 };
 const goToFirstPost = () => {
-  router.push({ name: 'postDetail', params: { id: ':id1' } });
+  router.push({ name: 'postDetail', params: { id: 'id1' } });
 };
 </script>
 
