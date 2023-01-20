@@ -19,7 +19,11 @@
 </template>
 
 <script setup>
-import { reactive, computed, watch, onBeforeUpdate, onUpdated } from 'vue';
+import { reactive, computed, watch, onMounted } from 'vue';
+
+onMounted(() => {
+  console.log('Do stuff related to title');
+});
 
 const counterData = reactive({
   count: 0,
@@ -44,16 +48,13 @@ const decreaseCounter = (amount, event) => {
   counterData.count -= amount;
 };
 
-onBeforeUpdate(() => {
-  console.log('Before Update');
-});
-onUpdated(() => {
-  console.log('Before Update');
+onMounted(() => {
+  console.log('Do stuff related to counter');
 });
 </script>
 
 <style scoped>
-.home {
+commen .home {
   text-align: center;
   padding: 1rem;
 }
