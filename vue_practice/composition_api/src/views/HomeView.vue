@@ -19,40 +19,14 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue';
+import { ref } from 'vue';
+import { useCounter } from '@/use/useCounter';
 import { vAutofocus } from '@/directives/vAutofocus';
 
 const appTitleRef = ref(null);
 
-onMounted(() => {
-  console.log(`The app title is ${appTitleRef.value.offsetWidth} pixels wide`);
-});
-
-const counterData = reactive({
-  count: 0,
-  title: 'My Counter',
-});
-
-watch(
-  () => counterData.count,
-  (newVal, oldVal) => {
-    console.log('Change by:', newVal - oldVal);
-  }
-);
-
-const oddOrEven = computed(() => {
-  return counterData.count % 2 === 0 ? 'even' : 'odd';
-});
-
-const increaseCounter = (amount, event) => {
-  counterData.count += amount;
-  nextTick(() => {
-    console.log('Do something on update');
-  });
-};
-const decreaseCounter = (amount, event) => {
-  counterData.count -= amount;
-};
+const { counterData, oddOrEven, increaseCounter, decreaseCounter } =
+  useCounter();
 </script>
 
 <style scoped>
