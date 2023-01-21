@@ -24,22 +24,13 @@
       </div>
     </div>
 
-    <div class="card mb-4" v-for="note in notes" :key="note.id">
-      <div class="card-content">
-        <div class="content">
-          {{ note.content }}
-        </div>
-      </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
-      </footer>
-    </div>
+    <note v-for="note in notes" :key="note.id" :note="note" />
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import Note from '@/components/notes/Note.vue';
 
 const newNote = ref('');
 const newNoteRef = ref(null);
