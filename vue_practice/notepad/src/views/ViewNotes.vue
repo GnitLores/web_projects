@@ -24,50 +24,24 @@
       </div>
     </div>
 
-    <note
-      v-for="note in notes"
-      :key="note.id"
-      :note="note"
-      @deleteClicked="deleteNote"
-    />
+    <note v-for="note in storeNotes.notes" :key="note.id" :note="note" />
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import { useStoreNotes } from '@/stores/storeNotes';
 import Note from '@/components/notes/Note.vue';
+
+const storeNotes = useStoreNotes();
 
 const newNote = ref('');
 const newNoteRef = ref(null);
 
-const notes = ref([
-  {
-    id: 'id1',
-    content:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error maxime, vero deleniti voluptatem molestias ad! Architecto illum amet magnam, illo sed aspernatur porro enim nam adipisci, ea sint cumque non.',
-  },
-  {
-    id: 'id2',
-    content: 'Shorter note',
-  },
-]);
-
 const addNote = () => {
-  // use unique id generator in real project
-  let note = {
-    id: Math.floor(Math.random() * Date.now()).toString(),
-    content: newNote.value,
-  };
-
-  notes.value.unshift(note);
+  storeNotes.addNote(newNote.value);
   newNote.value = '';
   newNoteRef.value.focus();
-};
-
-const deleteNote = (id) => {
-  notes.value = notes.value.filter((note) => {
-    return note.id !== id;
-  });
 };
 </script>
 
