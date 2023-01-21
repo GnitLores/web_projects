@@ -1,11 +1,11 @@
 import { reactive, computed, watch, nextTick } from 'vue';
 
-export function useCounter() {
-  const counterData = reactive({
-    count: 0,
-    title: 'My Counter',
-  });
+const counterData = reactive({
+  count: 0,
+  title: 'My Counter',
+});
 
+export function useCounter() {
   watch(
     () => counterData.count,
     (newVal, oldVal) => {
