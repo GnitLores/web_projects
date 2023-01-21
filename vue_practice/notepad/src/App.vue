@@ -1,11 +1,12 @@
 <template>
-  <RouterLink to="/">Notes</RouterLink> |
-  <RouterLink to="/stats">Stats</RouterLink>
+  <NavBar />
+  <!-- <RouterLink to="/" class="button">Notes</RouterLink> |
+  <RouterLink to="/stats" class="button">Stats</RouterLink> -->
   <RouterView />
 </template>
 
-<script>
-export default {};
+<script setup>
+import NavBar from '@/components/layout/NavBar.vue';
 </script>
 
 <style scoped></style>
