@@ -18,9 +18,8 @@ export const useStoreNotes = defineStore('storeNotes', {
   },
   actions: {
     addNote(noteText) {
-      // use unique id generator in real project
       let note = {
-        id: Math.floor(Math.random() * Date.now()).toString(),
+        id: window.crypto.randomUUID(),
         content: noteText,
       };
       this.notes.unshift(note);
