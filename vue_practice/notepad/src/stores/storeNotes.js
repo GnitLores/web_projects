@@ -4,6 +4,7 @@ import {
   doc,
   getDocs,
   setDoc,
+  deleteDoc,
   onSnapshot,
 } from 'firebase/firestore';
 import { db } from '@/js/firebase';
@@ -35,8 +36,8 @@ export const useStoreNotes = defineStore('storeNotes', {
         content: noteText,
       });
     },
-    deleteNote(id) {
-      this.notes = this.notes.filter((note) => note.id !== id);
+    async deleteNote(id) {
+      await deleteDoc(doc(notesCollection, id));
     },
     updateNote(id, content) {
       let index = this.notes.findIndex((note) => note.id == id);
