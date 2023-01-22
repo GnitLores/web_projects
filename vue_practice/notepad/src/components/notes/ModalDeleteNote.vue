@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 
 const props = defineProps({
@@ -33,13 +33,23 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update:modelValue']);
-
 const closeModal = () => {
   emit('update:modelValue', false);
 };
 
 const deleteModalRef = ref(null);
 onClickOutside(deleteModalRef, closeModal);
+
+const handleKeyboard = (event) => {
+  if (event.key === 'Escape') closeModal();
+};
+
+onMounted(() => {
+  document.addEventListener('keyup', handleKeyboard);
+});
+onUnmounted(() => {
+  document.removeEventListener('keyup', handleKeyboard);
+});
 </script>
 
 <style scoped></style>
