@@ -2,15 +2,17 @@ import { defineStore } from 'pinia';
 import {
   collection,
   doc,
-  getDocs,
-  setDoc,
+  addDoc,
   deleteDoc,
   updateDoc,
   onSnapshot,
+  query,
+  orderBy,
 } from 'firebase/firestore';
 import { db } from '@/js/firebase';
 
 const notesCollection = collection(db, 'notes');
+const notesQuery = query(notesCollection, orderBy('date', 'desc'));
 
 export const useStoreNotes = defineStore('storeNotes', {
   state: () => {
@@ -20,7 +22,7 @@ export const useStoreNotes = defineStore('storeNotes', {
   },
   actions: {
     async getNotes() {
-      onSnapshot(notesCollection, (querySnapshot) => {
+      onSnapshot(notesQuery, (querySnapshot) => {
         let notes = [];
         querySnapshot.forEach((doc) => {
           notes.push({
@@ -32,16 +34,20 @@ export const useStoreNotes = defineStore('storeNotes', {
       });
     },
     async addNote(noteText) {
-      const id = window.crypto.randomUUID();
-      await setDoc(doc(notesCollection, id), {
+      // can also use this to generate id: const id = window.crypto.randomUUID();
+      await addDoc(notesCollection, {
         content: noteText,
+        date: Date.now().toString(),
       });
     },
     async deleteNote(id) {
       await deleteDoc(doc(notesCollection, id));
     },
     async updateNote(id, content) {
-      await updateDoc(doc(notesCollection, id), { content });
+      await updateDoc(doc(notesCollection, id), {
+        content,
+        date: Date.now().toString(),
+      });
     },
   },
   getters: {
