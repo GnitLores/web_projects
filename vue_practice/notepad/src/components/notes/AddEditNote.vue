@@ -4,7 +4,7 @@
     <div class="field">
       <div class="control">
         <textarea
-          :value="props.modelValue"
+          :value="modelValue"
           @input="$emit('update:modelValue', $event.target.value)"
           ref="textAreaRef"
           class="textarea"

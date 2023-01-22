@@ -30,4 +30,14 @@ export const useStoreNotes = defineStore('storeNotes', {
       });
     },
   },
+  getters: {
+    // You can't pass arguments to getters, but you can return a function with access to the state.
+    getNoteContent: (state) => {
+      return (id) => {
+        return state.notes.filter((note) => {
+          return note.id === id;
+        })[0].content;
+      };
+    },
+  },
 });
