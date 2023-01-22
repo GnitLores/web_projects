@@ -1,10 +1,32 @@
 import { defineStore } from 'pinia';
 import { auth } from '@/js/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from 'firebase/auth';
 
 export const useStoreAuth = defineStore('storeAuth', {
-  state: () => {},
+  state: () => {
+    return {
+      user: {},
+    };
+  },
   actions: {
+    init() {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          this.user.id = user.uid;
+          this.user.email = user.email;
+          this.router.push('/');
+          // console.log(this.user);
+        } else {
+          this.user = {};
+          this.router.replace('/auth');
+        }
+      });
+    },
     registerUser(credentials) {
       createUserWithEmailAndPassword(
         auth,
@@ -13,11 +35,29 @@ export const useStoreAuth = defineStore('storeAuth', {
       )
         .then((userCredential) => {
           const user = userCredential.user;
+          // console.log('registered');
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorMessage);
+          // console.log('registration failed');
+        });
+    },
+    loginUser(credentials) {
+      signInWithEmailAndPassword(auth, credentials.email, credentials.password)
+        .then((userCredential) => {
+          // const user = userCredential.user;
+          // console.log('logged in');
+        })
+        .catch((error) => {
+          // console.log('login failed');
+        });
+    },
+    logoutUser() {
+      signOut(auth)
+        .then(() => {
+          // console.log('logged out');
+        })
+        .catch((error) => {
+          // console.log('logout failed');
         });
     },
   },
