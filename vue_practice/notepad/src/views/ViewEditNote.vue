@@ -28,6 +28,7 @@ import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStoreNotes } from '@/stores/storeNotes';
 import AddEditNote from '@/components/notes/AddEditNote.vue';
+import { useWatchCharacters } from '@/use/useWatchCharacters';
 
 const storeNotes = useStoreNotes();
 const route = useRoute();
@@ -41,6 +42,8 @@ const handleSaveClicked = () => {
   storeNotes.updateNote(route.params.id, noteContent.value);
   router.push('/');
 };
+
+useWatchCharacters(noteContent);
 </script>
 
 <style scoped></style>

@@ -10,6 +10,7 @@
           class="textarea"
           :placeholder="placeholder"
           v-autofocus
+          maxlength="100"
         />
       </div>
     </div>
