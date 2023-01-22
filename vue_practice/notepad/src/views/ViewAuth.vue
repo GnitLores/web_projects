@@ -49,6 +49,9 @@
 
 <script setup>
 import { ref, reactive, computed } from 'vue';
+import { useStoreAuth } from '@/stores/storeAuth';
+
+const storeAuth = useStoreAuth();
 
 const register = ref(false);
 const formTitle = computed(() => {
@@ -65,7 +68,7 @@ const onSubmit = () => {
     alert('Please enter email and password.');
   } else {
     if (register.value) {
-      console.log('register');
+      storeAuth.registerUser(credentials);
     } else {
       console.log('login');
     }
