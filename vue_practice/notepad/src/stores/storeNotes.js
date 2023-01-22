@@ -41,11 +41,6 @@ export const useStoreNotes = defineStore('storeNotes', {
       await deleteDoc(doc(notesCollection, id));
     },
     async updateNote(id, content) {
-      // let index = this.notes.findIndex((note) => note.id == id);
-
-      // // console.log(this.notes[index]);
-      // this.notes[index].content = content;
-
       await updateDoc(doc(notesCollection, id), { content });
     },
   },
