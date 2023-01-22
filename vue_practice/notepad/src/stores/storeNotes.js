@@ -25,18 +25,20 @@ export const useStoreNotes = defineStore('storeNotes', {
       this.notes.unshift(note);
     },
     deleteNote(id) {
-      this.notes = this.notes.filter((note) => {
-        return note.id !== id;
-      });
+      this.notes = this.notes.filter((note) => note.id !== id);
+    },
+    updateNote(id, content) {
+      let index = this.notes.findIndex((note) => note.id == id);
+
+      // console.log(this.notes[index]);
+      this.notes[index].content = content;
     },
   },
   getters: {
     // You can't pass arguments to getters, but you can return a function with access to the state.
     getNoteContent: (state) => {
       return (id) => {
-        return state.notes.filter((note) => {
-          return note.id === id;
-        })[0].content;
+        return state.notes.filter((note) => note.id === id)[0].content;
       };
     },
   },
