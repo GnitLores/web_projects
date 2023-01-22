@@ -46,8 +46,6 @@ const props = defineProps({
 
 const textAreaRef = ref(null);
 
-const emit = defineEmits(['update:modelValue']);
-
 const focusTextArea = () => {
   textAreaRef.value.focus();
 };
