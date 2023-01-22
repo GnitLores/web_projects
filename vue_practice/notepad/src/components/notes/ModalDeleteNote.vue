@@ -15,7 +15,12 @@
       </section>
       <footer class="modal-card-foot is-justify-content-flex-end">
         <button @click.prevent="closeModal" class="button">Cancel</button>
-        <button class="button is-danger">Delete</button>
+        <button
+          @click.prevent="storeNotes.deleteNote(noteId)"
+          class="button is-danger"
+        >
+          Delete
+        </button>
       </footer>
     </div>
   </div>
@@ -24,11 +29,18 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { onClickOutside } from '@vueuse/core';
+import { useStoreNotes } from '@/stores/storeNotes';
+
+const storeNotes = useStoreNotes();
 
 const props = defineProps({
   modelValue: {
     type: Boolean,
     default: false,
+  },
+  noteId: {
+    type: String,
+    required: true,
   },
 });
 
