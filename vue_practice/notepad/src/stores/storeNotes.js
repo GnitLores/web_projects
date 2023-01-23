@@ -10,9 +10,10 @@ import {
   orderBy,
 } from 'firebase/firestore';
 import { db } from '@/js/firebase';
+import { useStoreAuth } from '@/stores/storeAuth';
 
-const notesCollection = collection(db, 'notes');
-const notesQuery = query(notesCollection, orderBy('date', 'desc'));
+let notesCollection = null;
+let notesQuery = null;
 
 export const useStoreNotes = defineStore('storeNotes', {
   state: () => {
@@ -22,6 +23,12 @@ export const useStoreNotes = defineStore('storeNotes', {
     };
   },
   actions: {
+    init() {
+      const storeAuth = useStoreAuth();
+      notesCollection = collection(db, 'users', storeAuth.user.id, 'notes');
+      notesQuery = query(notesCollection, orderBy('date', 'desc'));
+      this.getNotes();
+    },
     async getNotes() {
       this.notesLoaded = false;
       onSnapshot(notesQuery, (querySnapshot) => {
@@ -36,6 +43,9 @@ export const useStoreNotes = defineStore('storeNotes', {
         this.notes = notes;
         this.notesLoaded = true;
       });
+    },
+    clearNotes() {
+      this.notes = [];
     },
     async addNote(noteText) {
       // can also use this to generate id: const id = window.crypto.randomUUID();
