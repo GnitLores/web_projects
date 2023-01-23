@@ -33,8 +33,6 @@ export const useStoreNotes = defineStore('storeNotes', {
     async getNotes() {
       this.notesLoaded = false;
 
-      if (unsubscribe) unsubscribe();
-
       unsubscribe = onSnapshot(notesQuery, (querySnapshot) => {
         let notes = [];
         querySnapshot.forEach((doc) => {
@@ -50,6 +48,7 @@ export const useStoreNotes = defineStore('storeNotes', {
     },
     clearNotes() {
       this.notes = [];
+      if (unsubscribe) unsubscribe();
     },
     async addNote(noteText) {
       // can also use this to generate id: const id = window.crypto.randomUUID();
